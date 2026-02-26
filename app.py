@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
 from random import randint
+from os import system
+
 class Entidade(ABC):
     def __init__(self,nome):
         self.nome = nome
@@ -96,6 +98,8 @@ def chamar_novo_inimigo(personagem):
     print(f"\n⚠️  Um novo {novo_inimigo.nome} nível {novo_inimigo.lv} apareceu!")
     return novo_inimigo
 
+def limpar_tela():
+    system('cls')
 
 def batalhar(personagem,inimigo):
     print('-------------RPG PYTHON-------------')
@@ -106,6 +110,7 @@ def batalhar(personagem,inimigo):
         print('-------------AÇÃO-------------------')
         print('[A] Atacar [U] Usar Poção [F] Fugir')
         opcao = input('Opção: ').lower()
+        limpar_tela()
         if opcao == 'a':
             personagem.atacar(inimigo)
             if inimigo.esta_vivo:
